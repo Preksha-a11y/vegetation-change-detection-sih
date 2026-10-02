@@ -83,6 +83,10 @@ if FRONTEND_DIR.exists():
 if DATA_DIR.exists():
     app.mount("/data", StaticFiles(directory=str(DATA_DIR)), name="data")
 
+GEOVISION_DIR = APP_ROOT / "SIH_3" / "geovision" / "dist"
+if GEOVISION_DIR.exists():
+    app.mount("/geovision", StaticFiles(directory=str(GEOVISION_DIR), html=True), name="geovision")
+
 
 @app.get("/")
 def serve_index():
